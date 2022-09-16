@@ -5,10 +5,10 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 require("dotenv").config();
 
-import accountCreateFcn from "./accountCreate.js";
-import * as approvals from "./allowanceApprovals.js";
-import * as transfers from "./allowanceTransfers.js";
-import * as queries from "./queries.js";
+import accountCreateFcn from "./utils/accountCreate.js";
+import * as approvals from "./utils/allowanceApprovals.js";
+import * as transfers from "./utils/allowanceTransfers.js";
+import * as queries from "./utils/queries.js";
 
 const operatorId = AccountId.fromString(process.env.OPERATOR_ID);
 const operatorKey = PrivateKey.fromString(process.env.OPERATOR_PVKEY);
