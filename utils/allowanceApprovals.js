@@ -18,10 +18,12 @@ export async function ftAllowanceFcn(tId, owner, spender, allowBal, pvKey, clien
 	return allowanceRx;
 }
 
-export async function nftAllowanceFcn(tId, owner, spender, nft2Send, pvKey, client) {
+export async function nftAllowanceFcn(tId, owner, spender, nft2Approve, pvKey, client) {
 	const allowanceTx = new AccountAllowanceApproveTransaction()
-		.approveTokenNftAllowanceAllSerials(tId, owner, spender) // Can approve all serials under a NFT collection
-		// .approveTokenNftAllowance(nft2Send, owner, spender)	// Or can approve individual serials under a NFT collection
+		// .approveTokenNftAllowanceAllSerials(tId, owner, spender) // Can approve all serials under a NFT collection
+		.approveTokenNftAllowance(nft2Approve[0], owner, spender) // Or can approve individual serials under a NFT collection
+		.approveTokenNftAllowance(nft2Approve[1], owner, spender)
+		.approveTokenNftAllowance(nft2Approve[2], owner, spender)
 		.freezeWith(client);
 	const allowanceSign = await allowanceTx.sign(pvKey);
 	const allowanceSubmit = await allowanceSign.execute(client);
@@ -30,10 +32,10 @@ export async function nftAllowanceFcn(tId, owner, spender, nft2Send, pvKey, clie
 	return allowanceRx;
 }
 
-export async function nftAllowanceDeleteFcn(tId, owner, nft2disallow, pvKey, client) {
+export async function nftAllowanceDeleteFcn(owner, nft2disallow, pvKey, client) {
 	const allowanceTx = new AccountAllowanceDeleteTransaction()
-		.deleteAllTokenNftAllowances(new NftId(tId, nft2disallow[0]), owner)
-		.deleteAllTokenNftAllowances(new NftId(tId, nft2disallow[1]), owner)
+		.deleteAllTokenNftAllowances(nft2disallow[0], owner)
+		.deleteAllTokenNftAllowances(nft2disallow[1], owner)
 		.freezeWith(client);
 	const allowanceSign = await allowanceTx.sign(pvKey);
 	const allowanceSubmit = await allowanceSign.execute(client);
