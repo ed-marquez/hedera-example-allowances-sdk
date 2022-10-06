@@ -42,9 +42,9 @@ async function main() {
 
 	// Can approve all serials under a NFT collection
 	// Or can approve individual serials under a NFT collection
-	const nft1 = new NftId(tokenId, 3);
-	const nft2 = new NftId(tokenId, 4);
-	const nft3 = new NftId(tokenId, 5);
+	const nft1 = new NftId(tokenId, 1);
+	const nft2 = new NftId(tokenId, 2);
+	const nft3 = new NftId(tokenId, 3);
 	const nft2approve = [nft1, nft2, nft3];
 	const allowanceApproveFtRx = await approvals.nftAllowanceFcn(tokenId, treasuryId, aliceId, nft2approve, treasuryKey, client);
 	console.log(`- Allowance approval status: ${allowanceApproveFtRx.status}`);
