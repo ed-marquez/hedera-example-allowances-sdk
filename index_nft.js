@@ -46,8 +46,8 @@ async function main() {
 	const nft2 = new NftId(tokenId, 2);
 	const nft3 = new NftId(tokenId, 3);
 	const nft2approve = [nft1, nft2, nft3];
-	const allowanceApproveFtRx = await approvals.nftAllowanceFcn(tokenId, treasuryId, aliceId, nft2approve, treasuryKey, client);
-	console.log(`- Allowance approval status: ${allowanceApproveFtRx.status}`);
+	const allowanceApproveNftRx = await approvals.nftAllowanceFcn(tokenId, treasuryId, aliceId, nft2approve, treasuryKey, client);
+	console.log(`- Allowance approval status: ${allowanceApproveNftRx.status}`);
 
 	await queries.balanceCheckerFcn(treasuryId, tokenId, client);
 	await queries.balanceCheckerFcn(aliceId, tokenId, client);
@@ -56,8 +56,8 @@ async function main() {
 	// STEP 3 ===================================
 	console.log(`\nSTEP 3 ===================================\n`);
 	console.log(`- Alice performing allowance transfer from Treasury to Bob...\n`);
-	const allowanceSendHbarRx = await transfers.nftAllowanceFcn(treasuryId, bobId, nft3, aliceId, aliceKey, client);
-	console.log(`- Allowance transfer status: ${allowanceSendHbarRx.status} \n`);
+	const allowanceSendNftRx = await transfers.nftAllowanceFcn(treasuryId, bobId, nft3, aliceId, aliceKey, client);
+	console.log(`- Allowance transfer status: ${allowanceSendNftRx.status} \n`);
 
 	await queries.balanceCheckerFcn(treasuryId, tokenId, client);
 	await queries.balanceCheckerFcn(aliceId, tokenId, client);
@@ -68,8 +68,8 @@ async function main() {
 	console.log(`- Treasury deleting NFT allowance for Alice...\n`);
 
 	const nft2disallow = [nft1, nft2];
-	const allowanceDeleteHbarRx = await approvals.nftAllowanceDeleteFcn(treasuryId, nft2disallow, treasuryKey, client);
-	console.log(`- Allowance deletion status: ${allowanceDeleteHbarRx.status}`);
+	const allowanceDeleteNftRx = await approvals.nftAllowanceDeleteFcn(treasuryId, nft2disallow, treasuryKey, client);
+	console.log(`- Allowance deletion status: ${allowanceDeleteNftRx.status}`);
 
 	console.log(`
 ====================================================

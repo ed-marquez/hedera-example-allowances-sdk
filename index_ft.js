@@ -53,8 +53,8 @@ async function main() {
 	console.log(`\nSTEP 3 ===================================\n`);
 	console.log(`- Alice performing allowance transfer from Treasury to Bob...\n`);
 	const sendBal = 45; // Spender must generate the TX ID or be the client
-	const allowanceSendHbarRx = await transfers.ftAllowanceFcn(tokenId, treasuryId, bobId, sendBal, aliceId, aliceKey, client);
-	console.log(`- Allowance transfer status: ${allowanceSendHbarRx.status} \n`);
+	const allowanceSendFtRx = await transfers.ftAllowanceFcn(tokenId, treasuryId, bobId, sendBal, aliceId, aliceKey, client);
+	console.log(`- Allowance transfer status: ${allowanceSendFtRx.status} \n`);
 
 	await queries.balanceCheckerFcn(treasuryId, tokenId, client);
 	await queries.balanceCheckerFcn(aliceId, tokenId, client);
@@ -64,8 +64,8 @@ async function main() {
 	console.log(`\nSTEP 4 ===================================\n`);
 	console.log(`- Treasury deleting fungible token allowance for Alice...\n`);
 	allowBal = 0;
-	const allowanceDeleteHbarRx = await approvals.ftAllowanceFcn(tokenId, treasuryId, aliceId, allowBal, treasuryKey, client);
-	console.log(`- Allowance deletion status: ${allowanceDeleteHbarRx.status}`);
+	const allowanceDeleteFtRx = await approvals.ftAllowanceFcn(tokenId, treasuryId, aliceId, allowBal, treasuryKey, client);
+	console.log(`- Allowance deletion status: ${allowanceDeleteFtRx.status}`);
 	console.log(`- https://testnet.mirrornode.hedera.com/api/v1/accounts/${treasuryId}/allowances/tokens`);
 
 	console.log(`
