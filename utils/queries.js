@@ -13,6 +13,11 @@ export async function tokenQueryFcn(tkId, client) {
 	return info;
 }
 
+export async function accountQueryFcn(aId, client) {
+	let info = await new AccountInfoQuery().setAccountId(aId).execute(client);
+	return info;
+}
+
 export async function balanceCheckerFcn(acId, tkId, client) {
 	let balanceCheckTx = [];
 	try {
