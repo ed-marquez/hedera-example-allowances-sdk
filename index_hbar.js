@@ -44,6 +44,9 @@ async function main() {
 	await queries.balanceCheckerFcn(aliceId, [], client);
 	await queries.balanceCheckerFcn(bobId, [], client);
 
+	const treasuryAccountInfo = await queries.accountQueryFcn(treasuryId, client)
+	const aliceAccountInfo = await queries.accountQueryFcn(aliceId, client)
+
 	// STEP 3 ===================================
 	console.log(`\nSTEP 3 ===================================\n`);
 	console.log(`- Alice performing allowance transfer from Treasury to Bob...\n`);
