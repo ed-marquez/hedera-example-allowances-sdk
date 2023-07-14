@@ -1,4 +1,4 @@
-import { TransactionRecordQuery, TokenInfoQuery, AccountBalanceQuery } from "@hashgraph/sdk";
+import { TransactionRecordQuery, TokenInfoQuery, AccountBalanceQuery, AccountInfoQuery } from "@hashgraph/sdk";
 
 export async function txRecQueryFcn(txId, client) {
 	const recQuery = await new TransactionRecordQuery()
